@@ -27,6 +27,10 @@ describe('Profile View', function() {
     it('should exist', function() {
         expect(this.profile).to.be.ok;
     });
+    
+    it('has a default element tag', function() {
+        expect(this.profile.tagName).to.equal('div');
+    });
 
     it('render()', function() {
         this.profile.render();
@@ -34,6 +38,10 @@ describe('Profile View', function() {
         expect(this.profile.$el.html().match(/John/)).to.be.ok;
         expect(this.profile.$el.html().match(/Black/)).to.be.ok;
         expect(this.profile.$el.html().match(/35/)).to.be.ok;
+    });
+    
+    it('toggleFont()', function() {
+        expect(this.profile.toggleFont).not.toHaveBeenCalled();
     });
 
 });
