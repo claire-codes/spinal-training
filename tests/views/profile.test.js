@@ -1,4 +1,4 @@
-suite('Profile View', function() {
+describe('Profile View', function() {
 
     // Create a User model to pass into our view to give it data
     var model = new app.models.User({
@@ -7,7 +7,7 @@ suite('Profile View', function() {
         age: 35
     });
 
-    setup(function() {
+    beforeEach(function() {
         this.profile = new app.views.Profile({
             // Pass in a jQuery in memory <div> for testing the view rendering
             el: $('<div>'), 
@@ -20,15 +20,15 @@ suite('Profile View', function() {
         });
     });
 
-    teardown(function() {
+    afterEach(function() {
         this.profile = null;
     });
 
-    test('should exist', function() {
+    it('should exist', function() {
         expect(this.profile).to.be.ok;
     });
 
-    test('render()', function() {
+    it('render()', function() {
         this.profile.render();
 
         expect(this.profile.$el.html().match(/John/)).to.be.ok;
