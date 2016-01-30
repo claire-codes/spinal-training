@@ -10,11 +10,11 @@ describe('Profile View', function() {
     beforeEach(function() {
         this.profile = new app.views.Profile({
             // Pass in a jQuery in memory <div> for testing the view rendering
-            el: $('<div>'), 
-            
-            // Pass in the User model 
-            // dependency inversion makes this simple to test, 
-            // we are in control of the dependencies rather 
+            el: $('<div>'),
+
+            // Pass in the User model
+            // dependency inversion makes this simple to test,
+            // we are in control of the dependencies rather
             // than the view setting them up internally.
             model: model
         });
@@ -27,7 +27,7 @@ describe('Profile View', function() {
     it('should exist', function() {
         expect(this.profile).to.be.ok;
     });
-    
+
     it('has a default element tag', function() {
         expect(this.profile.tagName).to.equal('div');
     });
@@ -39,9 +39,13 @@ describe('Profile View', function() {
         expect(this.profile.$el.html().match(/Black/)).to.be.ok;
         expect(this.profile.$el.html().match(/35/)).to.be.ok;
     });
-    
+
     it('toggleFont()', function() {
-        expect(this.profile.toggleFont).not.toHaveBeenCalled();
+        var s = sinon.spy();
+        var mySpy = sinon.spy(this.profile, 'toggleFont');
+        expect(mySpy.calledOnce).not.to.be.true;
+        this.profile.toggleFont();
+        expect(mySpy.calledOnce).to.be.true;
     });
 
 });
