@@ -10,14 +10,21 @@
     "emoji",
     "backbone"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/claireparker/spinal-emoji.git"
+  },
   "author": "Claire Parker <claire.parker87@gmail.com>",
   "license": "MIT",
   "engines": {
     "node": ">=0.8"
   },
   "devDependencies": {
+    "chai": "^3.5.0",
+    "jasmine-jquery": "^2.1.1",
+    "mocha": "^1.21.4",
     "mocha-phantomjs": "*",
-    "mocha": "^1.21.4"
+    "sinon": "^1.17.3"
   },
   "dependencies": {
     "backbone": "^1.2.3",
