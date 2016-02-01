@@ -41,10 +41,13 @@ describe('Profile View', function() {
     });
 
     it('toggleFont()', function() {
+      this.profile.render();
         var s = sinon.spy();
         var mySpy = sinon.spy(this.profile, 'toggleFont');
+        expect($(this.profile.$el).find('#para').text()).to.equal('floop')
+        expect($(this.profile.el).class).to.equal('')
         expect(mySpy.calledOnce).not.to.be.true;
-        this.profile.toggleFont();
+        this.profile.$el.find('#para').click();
         expect(mySpy.calledOnce).to.be.true;
     });
 
