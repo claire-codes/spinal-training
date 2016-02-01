@@ -7,7 +7,12 @@ describe('Profile View', function() {
         age: 35
     });
 
+    var mySpy;
+
     beforeEach(function() {
+        // Set spy before instantiating View
+        mySpy = sinon.spy(app.views.Profile.prototype, 'toggleFont');
+
         this.profile = new app.views.Profile({
             // Pass in a jQuery in memory <div> for testing the view rendering
             el: $('<div>'),
@@ -22,6 +27,7 @@ describe('Profile View', function() {
 
     afterEach(function() {
         this.profile = null;
+        app.views.Profile.prototype.toggleFont.restore();
     });
 
     it('should exist', function() {
@@ -41,13 +47,9 @@ describe('Profile View', function() {
     });
 
     it('toggleFont()', function() {
-      this.profile.render();
-        var s = sinon.spy();
-        var mySpy = sinon.spy(this.profile, 'toggleFont');
-        expect($(this.profile.$el).find('#para').text()).to.equal('floop')
-        expect($(this.profile.el).class).to.equal('')
+        this.profile.render();
         expect(mySpy.calledOnce).not.to.be.true;
-        this.profile.$el.find('#para').click();
+        this.profile.$el.find('button').click();
         expect(mySpy.calledOnce).to.be.true;
     });
 

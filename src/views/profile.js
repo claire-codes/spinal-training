@@ -3,16 +3,17 @@
     app.views.Profile = Backbone.View.extend({
 
         events: {
-                "click #para": "toggleFont"
+                "click button": "toggleFont"
         },
 
         toggleFont: function() {
-                this.$el.toggleClass('togged');
+                this.$el.toggleClass('toggled');
         },
 
         render: function() {
             var html = "<h1>"+ this.model.getFullName() +"</h1>" +
-                "<p id='para'>"+ this.model.get('first_name') +" is "+ this.model.get('age') + " years old";
+                "<p>"+ this.model.get('first_name') +" is "+ this.model.get('age') + " years old" +
+                "<p><button>Toggle font</button></p>";
 
             this.$el.html(html);
         }
