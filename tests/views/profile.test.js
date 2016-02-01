@@ -16,11 +16,6 @@ describe('Profile View', function() {
         this.profile = new app.views.Profile({
             // Pass in a jQuery in memory <div> for testing the view rendering
             el: $('<div>'),
-
-            // Pass in the User model
-            // dependency inversion makes this simple to test,
-            // we are in control of the dependencies rather
-            // than the view setting them up internally.
             model: model
         });
     });
@@ -48,9 +43,9 @@ describe('Profile View', function() {
 
     it('toggleFont()', function() {
         this.profile.render();
-        expect(mySpy.calledOnce).not.to.be.true;
+        expect(mySpy).not.to.have.been.calledOnce;
         this.profile.$el.find('button').click();
-        expect(mySpy.calledOnce).to.be.true;
+        expect(mySpy).to.have.been.calledOnce;
     });
 
 });
